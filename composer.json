@@ -1,0 +1,31 @@
+{
+    "name": "alexivashchenko/php-logs",
+    "version": "0.1",
+    "description": "PSR-3 logging class",
+    "type": "library",
+    "keywords": [
+        "PSR-3",
+        "logging"
+    ],
+    "require": {
+        "psr/log": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lexivashchenko",
+            "email": "lex.ivashchenko@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ali\\": "inc/Ali/"
+        }
+    },
+    "config": {
+        "vendor-dir": "inc/vendor"
+    }
+}

@@ -1,0 +1,40 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <h1 id="php-logs-reader">php-logs-reader</h1>
+<p> A web interface for PSR-3 logging</p>
+<h2 id="composer">Composer</h2>
+<h3 id="installation">Installation</h3>
+<p>From the Command Line:</p>
+<pre><code>composer require alexivashchenko/php-logs-reader:dev-master
+</code></pre><h3 id="update">Update</h3>
+<pre><code>composer update alexivashchenko/php-logs-reader
+</code></pre><h2 id="basic-usage">Basic Usage</h2>
+<h3 id="create-logs">Create logs</h3>
+<pre><code class="lang-php">&lt;?php
+
+require &#39;vendor&#39; . DIRECTORY_SEPARATOR . &#39;autoload.php&#39;;
+
+$LogsGenerator = new Logs\Generator([
+    &#39;path&#39; =&gt; &#39;logs&#39; . DIRECTORY_SEPARATOR,
+    &#39;channel&#39; =&gt; &#39;dummy&#39;,
+    &#39;log_files_format&#39; =&gt; &#39;log&#39;,
+    &#39;line_type&#39; =&gt; &#39;string&#39;,
+]);
+
+$LogsGenerator-&gt;info(&#39;New user added&#39;, [
+    &#39;id&#39; =&gt; 1,
+    &#39;firstname&#39; =&gt; &#39;Barack&#39;,
+    &#39;lastname&#39; =&gt; &#39;Obama&#39;,
+    &#39;status&#39; =&gt; &#39;ex-president&#39;,
+]);
+$LogsGenerator-&gt;error(&#39;Error adding user&#39;);
+</code></pre>
+<h2 id="todo">Todo</h2>
+<p>Create logs reader interface</p>
+
+      </body>
+    </html>

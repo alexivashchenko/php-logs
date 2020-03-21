@@ -1,0 +1,5 @@
+composer.phar
+composer.lock
+inc/vendor/
+logs/
+tmp.txt
