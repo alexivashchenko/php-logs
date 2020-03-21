@@ -1,7 +1,7 @@
 <?php
 
 // Created: 2020/03/19 17:02:52
-// Last modified: 2020/03/21 19:17:18
+// Last modified: 2020/03/21 21:34:09
 
 // Developer: Alexander Ivashchenko
 // Site: http://ivashchenko.in.ua/
@@ -69,7 +69,7 @@ class Logger extends AbstractLogger
 
 
 
-	function __construct($data = [])
+	function __construct(array $data = [])
 	{
 		if (!empty($data)) {
 			foreach ($data as $key => $value) {
@@ -80,6 +80,8 @@ class Logger extends AbstractLogger
 		}
 
 		$this->time_stamp = ( $this->time_stamp === 0 ) ? strtotime('now') : (int) $this->time_stamp;
+
+		$this->path = rtrim($this->path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 	}
 
 
@@ -134,7 +136,6 @@ class Logger extends AbstractLogger
 		$folder = $this->logFileDirPath();
 
 		if (!file_exists($folder)) {
-
 			if (!mkdir($folder, 0777, true)) {
 				throw new \Exception('Failed to create log path: ' . $folder);
 			}
@@ -171,7 +172,7 @@ class Logger extends AbstractLogger
 			}, $data);
 
 			$date = DateTime::createFromFormat($this->date_format, $data[0]);
-			$data = $this->lineData($date->format('U'), $data[1], $data[2], $data[3]);
+			$data = $this->lineData($date->getTimestamp(), $data[1], $data[2], $data[3]);
 
 		}
 
@@ -184,7 +185,7 @@ class Logger extends AbstractLogger
 	{
 
 		$date = DateTime::createFromFormat('Y-m-d', $date);
-		$this->time_stamp = $date->format('U');
+		$this->time_stamp = $date->getTimestamp();
 
 		$log = [];
 
