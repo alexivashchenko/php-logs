@@ -2,11 +2,15 @@
 
 
 ## Description
+
 [PSR-3](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) compatible PHP logging class.
+
 It implements `Psr\Log\LoggerInterface`
+
 Use it to create and read log files.
 
 Log file directories pattern: `/{path}/{channel}/{year}/{month}/{date}.{log_files_format}`
+
 Example: `/logs/user-actions/2020/02/02.log`
 
 ## Composer
